@@ -12,35 +12,44 @@
 class ImageMaker {
     constructor(){
         // When this class is instantiated, the `constructor()` method is executed.
-        // TODO: Set up attributes that point to the HTML elements we wish to work with.
+        // Set up attributes that point to the HTML elements we wish to work with.
 
-        // TODO: Select the `#image-preview` div using any document selector method.
-        this.imagePreview = ;
+        // Select the `#image-preview` div using any document selector method.
+        // Before watching the walk through I choose document.getElementById selector method.
+        this.imagePreview = document.getElementById('image-preview');
+        
+        
+        // create a new `<p>` element called `this.topText`
+        this.topText = document.createElement('p');
+        // Add a `class` attribute to `this.topText` that contains the classname "top-text".
+        this.topText.setAttribute('class', 'top-text');
 
-        // TODO: create a new `<p>` element called `this.topText`
-        this.topText = ;
-        // TODO: Add a `class` attribute to `this.topText` that contains the classname "top-text".
-
-        // TODO: Append `this.topText` as a child element to `this.imagePreview`
+        // Append `this.topText` as a child element to `this.imagePreview`
+        this.imagePreview.appendChild(this.topText);
 
 
-        // TODO: create a new `<p>` element called `this.bottomText`
-        this.bottomText = ;
-        // TODO: Add a `class` attribute to `this.bottomText` that contains the classname "bottom-text".
+        // create a new `<p>` element called `this.bottomText`
+        this.bottomText = document.createElement('p');
+        // Add a `class` attribute to `this.bottomText` that contains the classname "bottom-text".
+        this.bottomText.setAttribute('class', 'bottom-text');
 
-        // TODO: Append `this.bottomText` as a child element to `this.imagePreview`
+        // Append `this.bottomText` as a child element to `this.imagePreview`
+        this.imagePreview.appendChild(this.bottomText);
 
         // This class also needs to use the form fields to read user input. Set
         // those up for future use, too.
 
-        // TODO: Select the `input` element with the `name` attribute "backgroundImage"
-        this.backgroundInput = ;
+        // Select the `input` element with the `name` attribute "backgroundImage"
+        this.backgroundInput = document.querySelector('select[name="backgroundImage"]');
+        
+        // Select the `input` element with the `name` attribute "changeFont"
+        this.changeFont = document.querySelector('select[name="changeFont"]');
 
-        // TODO: Select the `input` element with the `name` attribute "topText"
-        this.topTextInput = ;
+        // Select the `input` element with the `name` attribute "topText"
+        this.topTextInput = document.querySelector('input[name="topText"]');
 
-        // TODO: Select the `input` element with the `name` attribute "bottomText"
-        this.bottomTextInput = ;
+        // TSelect the `input` element with the `name` attribute "bottomText"
+        this.bottomTextInput = document.querySelector('input[name="bottomText"]');
 
         // NOTE: If you add additional form fields to modify other aspects of
         // the image, then you will need to make attributes for each of those
@@ -53,11 +62,17 @@ class ImageMaker {
         // elements selected in the `constructor()` of this class in order to
         // update `this.imagePreview`.
 
-        // TODO: Update the `background-image` CSS property for `this.imagePreview`.
+        // Update the `background-image` CSS property for `this.imagePreview`.
+        this.imagePreview.style.backgroundImage = `url(images/${this.backgroundInput.value})`;
+        
+        // Update the `font-family` CSS property for `this.changeFont`.
+        this.imagePreview.style.fontFamily = this.changeFont.value;
 
-        // TODO: Update the `innerHTML` of `this.topText`.
+        // Update the `innerHTML` of `this.topText`.
+        this.topText.innerHTML = this.topTextInput.value;
 
-        // TODO: Update the `innerHTML` of `this.bottomText`
+        // Update the `innerHTML` of `this.bottomText`
+        this.bottomText.innerHTML = this.bottomTextInput.value;
 
 
     }
